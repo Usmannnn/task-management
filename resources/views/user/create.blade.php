@@ -6,7 +6,6 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('Generate User') }}</div>
-
                     <div class="card-body row">
                         <div class="col-md-6">
                             <div class="form-group">
