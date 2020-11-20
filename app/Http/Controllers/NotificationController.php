@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -34,7 +35,13 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Notification::create([
+            'user_id' => $request->person,
+            'name' => $request->notificationName,
+            'content' => $request->notificationContent
+        ]);
+
+        return back()->with(['message' => 'Notification generated..']);
     }
 
     /**

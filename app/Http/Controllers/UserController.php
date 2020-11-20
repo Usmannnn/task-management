@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -34,7 +35,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Product::create(['product_name' => "Television", 'product_key' => 'T-154234']);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'type'=> $request->type,
+        ]);
+
+        return back()->with(['message' => 'User generated..']);
     }
 
     /**

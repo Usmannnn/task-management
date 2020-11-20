@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -34,7 +35,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create([
+            'user_id' => $request->person,
+            'task_name' => $request->taskName,
+            'content' => $request->taskContent,
+            'start_date' => $request->startDate,
+            'end_date' => $request->endDate
+        ]);
+
+        return back()->with(['message' => 'Task defined..']);
+
     }
 
     /**
