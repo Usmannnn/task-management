@@ -30,8 +30,9 @@
                                     <label for="person">Select Destination</label>
                                     <select class="form-control" name="person" id="person">
                                         <option value="0">All User</option>
-                                        <option value="1">Ali</option>
-                                        <option value="2">Mehmet</option>
+                                        @foreach($users as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

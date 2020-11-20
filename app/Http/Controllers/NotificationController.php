@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -24,7 +25,9 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        return view('notification.create');
+        $users = User::whereNotIn('name', ['admin'])->get();
+
+        return view('notification.create')->with(['users' => $users]);
     }
 
     /**
@@ -52,7 +55,9 @@ class NotificationController extends Controller
      */
     public function show($id)
     {
-        //
+        $notify = Notification::where('user_id',$id)->get();
+
+        return view('notification.show')->with(['notifies' => $notify]);
     }
 
     /**

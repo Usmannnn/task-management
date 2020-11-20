@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -14,7 +15,6 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +24,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('task.create');
+        $users = User::whereNotIn('name', ['admin'])->get();
+
+        return view('task.create')->with(['users' => $users]);
     }
 
     /**
@@ -55,7 +57,8 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $tasks = Task::where('user_id',$id)->get();
+        return view('task.show')->with(['tasks' => $tasks]);
     }
 
     /**

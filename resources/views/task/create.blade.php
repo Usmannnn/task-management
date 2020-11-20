@@ -33,9 +33,10 @@
                                 <div class="form-group">
                                     <label for="person">Select Person</label>
                                     <select class="form-control" name="person" id="person">
-                                        <option value="1">Ahmet</option>
-                                        <option value="2">Ali</option>
-                                        <option value="3">Mehmet</option>
+                                        <option value="0">All User</option>
+                                        @foreach($users as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -59,11 +59,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    {{--  kullanıcı admin ise --}}
-                                    <a class="dropdown-item" href="{{route('user.create')}}">Generate User</a>
-                                    <a class="dropdown-item" href="{{route('task.create')}}">Define Task</a>
-                                    <a class="dropdown-item" href="{{route('notification.create')}}">Generate Notification</a>
-                                    {{--  kullanıcı admin ise --}}
+                                    @if(Auth::user()->id == '0')
+                                        <a class="dropdown-item" href="{{route('user.create')}}">Generate User</a>
+                                        <a class="dropdown-item" href="{{route('task.create')}}">Define Task</a>
+                                        <a class="dropdown-item" href="{{route('notification.create')}}">Generate Notification</a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('task.show', ['task' => Auth::user()->id]) }}">Show Task</a>
+                                        <a class="dropdown-item" href="{{route('notification.show', ['notification' => Auth::user()->id])}}">Show Notification</a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
