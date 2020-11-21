@@ -15,8 +15,13 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //
+        $results = Notification::with('users')->get();
+        return view('notification.index')->with(['results' => $results]);
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +60,9 @@ class NotificationController extends Controller
      */
     public function show($id)
     {
-        $notify = Notification::where('user_id',$id)->get();
+        $notify = Notification::where('user_id',$id)
+            ->orWhere('user_id', 0)
+            ->get();
 
         return view('notification.show')->with(['notifies' => $notify]);
     }
@@ -91,6 +98,12 @@ class NotificationController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+    }
+
+    public function getChangeStatus($id, $status)
+    {
+        Notification::where('id', $id)->update(['status' => $status]);
+        return back();
     }
 }

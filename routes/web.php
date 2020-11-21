@@ -27,6 +27,15 @@ Route::resource('user', App\Http\Controllers\UserController::class)
 
 Route::resource('task', App\Http\Controllers\TaskController::class)
     ->middleware('auth');
+Route::get('task/{id}/{status}',[App\Http\Controllers\TaskController::class,'getChangeStatus'])
+    ->middleware('auth')
+    ->name('task.statusChange');
 
 Route::resource('notification', App\Http\Controllers\NotificationController::class)
+    ->middleware('auth');
+Route::get('notification/{id}/{status}',[App\Http\Controllers\NotificationController::class,'getChangeStatus'])
+    ->middleware('auth')
+    ->name('notifiy.statusChange');
+
+Route::resource('comment', App\Http\Controllers\CommentController::class)
     ->middleware('auth');

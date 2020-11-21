@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
-use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $results = Task::with('users')->get();
-        return view('task.index')->with(['results' => $results]);
+        //
     }
 
     /**
@@ -26,9 +24,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $users = User::whereNotIn('name', ['admin'])->get();
-
-        return view('task.create')->with(['users' => $users]);
+        //
     }
 
     /**
@@ -39,16 +35,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
-            'user_id' => $request->person,
-            'task_name' => $request->taskName,
-            'content' => $request->taskContent,
-            'start_date' => $request->startDate,
-            'end_date' => $request->endDate
+        Comment::create([
+            'user_id' => $request->user_id,
+            'task_id' => $request->task_id,
+            'comment' => $request->comment,
         ]);
 
-        return back()->with(['message' => 'Task defined..']);
-
+        return back()->with(['message' => 'Commented..']);
     }
 
     /**
@@ -59,11 +52,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $tasks = Task::where('user_id', $id)
-            ->orWhere('user_id', 0)
-            ->get();
-
-        return view('task.show')->with(['tasks' => $tasks]);
+        //
     }
 
     /**
@@ -74,6 +63,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
+        //
     }
 
     /**
@@ -85,6 +75,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
@@ -96,11 +87,5 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getChangeStatus($id, $status)
-    {
-        Task::where('id', $id)->update(['status' => $status]);
-        return back();
     }
 }
