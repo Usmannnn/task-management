@@ -22,6 +22,12 @@
     <list default="true" id="c8f67ad0-cea4-4037-bc81-46a152da9975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/notification/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notification/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/notification/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notification/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/task/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/task/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/task/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +186,7 @@
       <workItem from="1605854993242" duration="23585000" />
       <workItem from="1605950846137" duration="4407000" />
       <workItem from="1605963750875" duration="58000" />
-      <workItem from="1605969657435" duration="1282000" />
+      <workItem from="1605969657435" duration="6520000" />
     </task>
     <servers />
   </component>
@@ -214,10 +220,10 @@
     </state>
     <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1605879674736" />
     <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1605809698468" />
-    <state x="339" y="165" key="run.anything.popup" timestamp="1605951823881">
+    <state x="339" y="165" key="run.anything.popup" timestamp="1605972435526">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1605951823881" />
+    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1605972435526" />
     <state x="346" y="59" key="search.everywhere.popup" timestamp="1605869746678">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -2,32 +2,51 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header"><h5>All User</h5></div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead class="thead-dark">
+        <div class="row">
+            <div class="col-11" style="margin-left: 150px;">
+                <div class="card bg-light shadow">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="text-dark mb-0">Users Info</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-light table-flush">
+                            <thead class="thead-light">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">E-Mail Address</th>
-                                <th scope="col">Type</th>
+                                <th scope="col" class="sort" data-sort="name">Full Name</th>
+                                <th scope="col" class="sort" data-sort="budget">E-Mail Address</th>
+                                <th scope="col" class="sort" data-sort="status">Type of User</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="list">
                             @foreach($users as $user)
                                 @if($user->id != 0)
                                     <tr>
-                                        <th scope="row">{{$user->id}}</th>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>
-                                            @if($user->type == 1)
-                                                Standart User
-                                            @endif
-                                        </td>
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+                                                <a href="#" class="avatar rounded-circle mr-3">
+                                                    <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">{{$user->name}}</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">{{$user->email}}r</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    @if($user->type == 1)
+                                                        <span class="name mb-0 text-sm">Standart User</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </th>
                                     </tr>
                                 @endif
                             @endforeach

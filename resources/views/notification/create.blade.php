@@ -2,48 +2,63 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">{{ __('Generate Notification') }}</div>
+        <div class="col-md-10" style="margin-left: 175px">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Generate Notification</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
                     <form action="{{route('notification.store')}}" method="POST">
                         @csrf
-                        <div class="card-body row">
+                        <h6 class="heading-small text-muted mb-4">Notification information</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Notification Name</label>
+                                        <input type="text" id="input-username" name="notificationName" class="form-control" placeholder="Holiday Explantation">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Select Person</label>
+                                        <select class="form-control" name="person" id="person">
+                                            <option value="0">All User</option>
+                                            @foreach($users as $user)
+                                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Task Content</label>
+                                        <textarea rows="4" class="form-control"name="notificationContent" placeholder="A few words about notification ..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
                             @if(session('message'))
-                                <div class="col-md-12">
-                                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                        {{session('message')}}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                <div class="row">
+                                    <div class="col-md-12 ">
+                                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                            {{session('message')}}
+                                            <button type="button" class="close mt-4" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="notificationName">Notification Name</label>
-                                    <input type="text" class="form-control" id="notificationName" name="notificationName"  placeholder="Type Notification Name">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success w-100">Define</button>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="person">Select Destination</label>
-                                    <select class="form-control" name="person" id="person">
-                                        <option value="0">All User</option>
-                                        @foreach($users as $user)
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="notificationContent">Notification Content</label>
-                                    <textarea class="form-control" style="height:150px;" id="notificationContent" name="notificationContent" placeholder="Notification Content.."></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-success w-100">Notify</button>
                             </div>
                         </div>
                     </form>
