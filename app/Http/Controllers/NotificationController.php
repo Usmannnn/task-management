@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
@@ -18,10 +19,6 @@ class NotificationController extends Controller
         $results = Notification::with('users')->get();
         return view('notification.index')->with(['results' => $results]);
     }
-
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -43,11 +40,21 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        Notification::create([
-            'user_id' => $request->person,
-            'name' => $request->notificationName,
-            'content' => $request->notificationContent
-        ]);
+        $notify = new Notification;
+
+        $notify['user_id'] = $request->person;
+        $notify['name'] = $request->notificationName;
+        $notify['content'] = $request->notificationContent;
+
+//        Notification::create([
+//            'user_id' => $request->person,
+//            'name' => $request->notificationName,
+//            'content' => $request->notificationContent
+//        ]);
+
+        $notify->save();
+
+        DB::insert('insert into user_notify(user_id,notification_id) values (?,?)', [$request->person, $notify->id]);
 
         return back()->with(['message' => 'Notification generated..']);
     }

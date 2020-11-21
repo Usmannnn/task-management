@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -39,13 +40,25 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
-            'user_id' => $request->person,
-            'task_name' => $request->taskName,
-            'content' => $request->taskContent,
-            'start_date' => $request->startDate,
-            'end_date' => $request->endDate
-        ]);
+        $task = new Task;
+
+        $task['user_id'] = $request->person;
+        $task['task_name'] = $request->taskName;
+        $task['content'] = $request->taskContent;
+        $task['start_date'] = $request->startDate;
+        $task['end_date'] = $request->endDate;
+
+//        Task::create([
+//            'user_id' => $request->person,
+//            'task_name' => $request->taskName,
+//            'content' => $request->taskContent,
+//            'start_date' => $request->startDate,
+//            'end_date' => $request->endDate
+//        ]);
+
+        $task->save();
+
+        DB::insert('insert into user_task(user_id,task_id) values (?,?)', [$request->person, $task->id]);
 
         return back()->with(['message' => 'Task defined..']);
 
