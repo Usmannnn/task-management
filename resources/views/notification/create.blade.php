@@ -57,7 +57,7 @@
                             @endif
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success w-100">Define</button>
+                                    <button type="submit" class="btn btn-primary w-100">Generate</button>
                                 </div>
                             </div>
                         </div>

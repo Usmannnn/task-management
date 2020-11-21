@@ -117,70 +117,117 @@
                         <!-- Collapse -->
                         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                             <!-- Nav items -->
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="{{route('home')}}">
-                                        <i class="ni ni-tv-2 text-primary"></i>
-                                        <span class="nav-link-text">Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('user.index')}}">
-                                        <i class="ni ni-single-02 text-yellow"></i>
-                                        <span class="nav-link-text">All User</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('task.index')}}">
-                                        <i class="ni ni-bullet-list-67 text-default"></i>
-                                        <span class="nav-link-text">All Task</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('notification.index')}}">
-                                        <i class="ni ni-send text-dark"></i>
-                                        <span class="nav-link-text">All Notification</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <i class="ni ni-key-25 text-info"></i>
-                                        <span class="nav-link-text">Logout</span>
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
-                            <!-- Divider -->
-                            <hr class="my-3">
-                            <!-- Heading -->
-                            <h6 class="navbar-heading p-0 text-muted">
-                                <span class="docs-normal">Generate Something</span>
-                            </h6>
-                            <!-- Navigation -->
-                            <ul class="navbar-nav mb-md-3">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('user.create')}}">
-                                        <i class="ni ni-single-02 text-yellow"></i>
-                                        <span class="nav-link-text">Generate User</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('task.create')}}">
-                                        <i class="ni ni-palette"></i>
-                                        <span class="nav-link-text">Define Task</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('notification.create')}}">
-                                        <i class="ni ni-ui-04"></i>
-                                        <span class="nav-link-text">Generate Notification</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            @if(Auth::user()->id == 0)
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="{{route('home')}}">
+                                            <i class="ni ni-tv-2 text-primary"></i>
+                                            <span class="nav-link-text">Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('user.index')}}">
+                                            <i class="ni ni-single-02 text-yellow"></i>
+                                            <span class="nav-link-text">All User</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('task.index')}}">
+                                            <i class="ni ni-bullet-list-67 text-default"></i>
+                                            <span class="nav-link-text">All Task</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('notification.index')}}">
+                                            <i class="ni ni-send text-dark"></i>
+                                            <span class="nav-link-text">All Notification</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="">
+                                            <i class="ni ni-email-83 text-dark"></i>
+                                            <span class="nav-link-text">Comments</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            <i class="ni ni-key-25 text-info"></i>
+                                            <span class="nav-link-text">Logout</span>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="{{route('home')}}">
+                                            <i class="ni ni-tv-2 text-primary"></i>
+                                            <span class="nav-link-text">Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('task.show',['task' => Auth::user()->id])}}">
+                                            <i class="ni ni-bullet-list-67 text-default"></i>
+                                            <span class="nav-link-text">Show Tasks</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('notification.show', ['notification' => Auth::user()->id])}}">
+                                            <i class="ni ni-send text-dark"></i>
+                                            <span class="nav-link-text">Show Notification</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="">
+                                            <i class="ni ni-email-83 text-dark"></i>
+                                            <span class="nav-link-text">Messages</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            <i class="ni ni-key-25 text-info"></i>
+                                            <span class="nav-link-text">Logout</span>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            @endif
+                            @if(Auth::user()->id == 0)
+                                <hr class="my-3">
+                                <!-- Heading -->
+                                <h6 class="navbar-heading p-0 text-muted">
+                                    <span class="docs-normal">Generate Something</span>
+                                </h6>
+
+                                <ul class="navbar-nav mb-md-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('user.create')}}">
+                                            <i class="ni ni-single-02 text-yellow"></i>
+                                            <span class="nav-link-text">Generate User</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('task.create')}}">
+                                            <i class="ni ni-palette"></i>
+                                            <span class="nav-link-text">Define Task</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('notification.create')}}">
+                                            <i class="ni ni-ui-04"></i>
+                                            <span class="nav-link-text">Generate Notification</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
