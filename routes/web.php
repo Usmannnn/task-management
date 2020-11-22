@@ -46,3 +46,6 @@ Route::get('notification/{id}/{status}',[App\Http\Controllers\NotificationContro
 
 Route::resource('comment', App\Http\Controllers\CommentController::class)
     ->middleware('auth');
+
+Route::resource('message', App\Http\Controllers\MessageController::class)
+    ->middleware('auth');

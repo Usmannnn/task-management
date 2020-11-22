@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8f67ad0-cea4-4037-bc81-46a152da9975" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/task/show-subtask.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/message/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/notification/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notification/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/task/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/task/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/task/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +182,7 @@
       <workItem from="1605950846137" duration="4407000" />
       <workItem from="1605963750875" duration="58000" />
       <workItem from="1605969657435" duration="8504000" />
-      <workItem from="1606057627348" duration="11374000" />
+      <workItem from="1606057627348" duration="12166000" />
     </task>
     <servers />
   </component>
@@ -217,11 +211,11 @@
     </state>
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1605879752225" />
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1605954056727" />
-    <state x="517" y="292" key="NewPhpFileDialog" timestamp="1606060647096">
+    <state x="517" y="292" key="NewPhpFileDialog" timestamp="1606069743006">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1605879674736" />
-    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1606060647096" />
+    <state x="517" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1606069743006" />
     <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606063670753">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
