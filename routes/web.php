@@ -30,6 +30,13 @@ Route::resource('task', App\Http\Controllers\TaskController::class)
 Route::get('task/{id}/{status}',[App\Http\Controllers\TaskController::class,'getChangeStatus'])
     ->middleware('auth')
     ->name('task.statusChange');
+Route::get('sub/{id}',[App\Http\Controllers\TaskController::class,'getSubTasks'])
+    ->middleware('auth')
+    ->name('task.subtask');
+Route::get('sub/update/{id}',[App\Http\Controllers\TaskController::class,'getChangeSubStatus'])
+    ->middleware('auth')
+    ->name('task.subtaskupdate');
+
 
 Route::resource('notification', App\Http\Controllers\NotificationController::class)
     ->middleware('auth');

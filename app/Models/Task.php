@@ -24,4 +24,8 @@ class Task extends Model
         return $this->belongsToMany(User::class,'user_task');
     }
 
+    public function sub() {
+
+        return $this->hasMany(Subtask::class,'task_id');
+    }
 }

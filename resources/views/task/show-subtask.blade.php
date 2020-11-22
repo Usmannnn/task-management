@@ -7,7 +7,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Tasks</h3>
+                            <h3 class="mb-0">SubTasks</h3>
                         </div>
                     </div>
                 </div>
@@ -16,44 +16,37 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                         <tr>
-                            <th scope="col">Task Name</th>
-                            <th scope="col">Task Content</th>
-                            <th scope="col">Task Status</th>
-                            <th scope="col">Task Progress</th>
+                            <th scope="col">Parent Task Name</th>
+                            <th scope="col">SubTask Content</th>
+                            <th scope="col">Task Progress
                             <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($tasks as $task)
+                        @foreach($subTasks as $subTask)
                             <tr>
                                 <th scope="row">
-                                    {{$task->task_name}}
+                                    @foreach($subTask->tasks as $task)
+                                        {{$subTask->tasks->task_name}}
+                                        @break
+                                    @endforeach
                                 </th>
                                 <th scope="row">
-                                    {{$task->content}}
-                                    {{$subCount}}
+                                    {{$subTask->content}}
                                 </th>
                                 <td>
-                                    @if($task->status == 0)
+                                    @if($subTask->status == 0)
                                         <span class="badge badge-secondary">Waiting</span>
                                     @else
                                         <span class="badge badge-secondary">All Done</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{$task->progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$task->progress}}%;"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 0])}}">Waiting</a>
-                                            <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 1])}}">Done</a>
-                                            <a class="dropdown-item" href="{{route('task.subtask',['id' => $task->user_id, 'status' => 1])}}">Done</a>
+                                            <a class="dropdown-item" href="{{route('task.subtaskupdate',['id' => $subTask->id, 'status' => 0])}}">Waiting</a>
+                                            <a class="dropdown-item" href="{{route('task.subtaskupdate',['id' => $subTask->id, 'status' => 1])}}">Done</a>
                                         </div>
                                     </div>
                                 </td>

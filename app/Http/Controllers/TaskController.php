@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subtask;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -75,8 +76,11 @@ class TaskController extends Controller
         $tasks = Task::where('user_id', $id)
             ->orWhere('user_id', 0)
             ->get();
-
-        return view('task.show')->with(['tasks' => $tasks]);
+        $subCount = Subtask::where('user_id', $id)
+            ->orWhere('user_id', 0)
+            ->get('task_id')
+            ->count();
+        return view('task.show')->with(['tasks' => $tasks, 'subCount' => $subCount]);
     }
 
     /**
@@ -115,5 +119,19 @@ class TaskController extends Controller
     {
         Task::where('id', $id)->update(['status' => $status]);
         return back();
+    }
+
+    public function getChangeSubStatus($id, $status)
+    {
+        Subtask::where('id', $id)->update(['status' => $status]);
+        return back();
+    }
+
+    public function getSubTasks($id) {
+
+        $subTasks = Subtask::with('tasks')
+            ->where(['user_id' => $id])
+            ->get();
+        return view('task.show-subtask')->with(['subTasks' => $subTasks]);
     }
 }

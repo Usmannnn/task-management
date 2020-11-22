@@ -6,7 +6,7 @@
             <div class="col-11" style="margin-left: 150px;">
                 <div class="card bg-light shadow">
                     <div class="card-header bg-transparent border-0">
-                        <h3 class="text-dark mb-0">Users Info</h3>
+                        <h3 class="text-dark mb-0">Tasks Info</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-light table-flush">
