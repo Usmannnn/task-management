@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -13,7 +16,6 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('message.index');
     }
 
     /**
@@ -23,7 +25,9 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::whereNotIn('id', [Auth::user()->id,0])->get();
+
+        return view('message.create')->with(['users' => $users]);
     }
 
     /**
@@ -34,7 +38,15 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Message::create([
+            'sender_id' => Auth::user()->id,
+            'receiver_id' => $request->reciver_id,
+            'm_head' => $request->m_head,
+            'message' => $request->messageContent
+        ]);
+
+        return back()->with(['message' => 'Message is sended..']);
     }
 
     /**
@@ -45,7 +57,15 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        //
+
+//        $messages = Message::where(['sender_id' => $id])->orWhere(['receiver_id' => $id])->get();
+
+        $messages = Message::with('users')
+            ->where(['sender_id' => $id])
+            ->orWhere(['receiver_id' => $id])
+            ->get();
+
+        return view('message.show')->with(['messages' => $messages]);
     }
 
     /**
@@ -80,5 +100,11 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getChangeStatus($id, $status)
+    {
+        Message::where('id', $id)->update(['isRead' => $status]);
+        return back();
     }
 }

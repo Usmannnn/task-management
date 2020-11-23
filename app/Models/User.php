@@ -52,4 +52,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Notification::class, 'user_notify');
     }
 
+    public function sended() {
+
+        return $this->hasMany(Message::class,'sender_id');
+    }
+
 }

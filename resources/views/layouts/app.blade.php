@@ -182,9 +182,15 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link" href="{{route('message.create')}}">
                                             <i class="ni ni-email-83 text-dark"></i>
                                             <span class="nav-link-text">Messages</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('message.show', ['message' => Auth::user()->id])}}">
+                                            <i class="ni ni-email-83 text-dark"></i>
+                                            <span class="nav-link-text">Show Messages</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -240,7 +246,8 @@
     </div>
 
 
-    <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+
+    <script src="{{asset('vendor/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/js-cookie/js.cookie.js')}}"></script>
     <script src="{{asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>

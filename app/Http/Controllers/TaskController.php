@@ -6,6 +6,7 @@ use App\Models\Subtask;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
@@ -30,7 +31,9 @@ class TaskController extends Controller
     {
         $users = User::whereNotIn('name', ['admin'])->get();
 
-        return view('task.create')->with(['users' => $users]);
+        $tasks = Task::get();
+
+        return view('task.create')->with(['users' => $users , 'tasks' => $tasks]);
     }
 
     /**
@@ -49,20 +52,25 @@ class TaskController extends Controller
         $task['start_date'] = $request->startDate;
         $task['end_date'] = $request->endDate;
 
-//        Task::create([
-//            'user_id' => $request->person,
-//            'task_name' => $request->taskName,
-//            'content' => $request->taskContent,
-//            'start_date' => $request->startDate,
-//            'end_date' => $request->endDate
-//        ]);
 
         $task->save();
 
+        //user_task modeli olmadığı için
         DB::insert('insert into user_task(user_id,task_id) values (?,?)', [$request->person, $task->id]);
 
         return back()->with(['message' => 'Task defined..']);
 
+    }
+
+    public function storeSub (Request $request) {
+
+        Subtask::create([
+            'user_id' => $request->person,
+            'task_id' => $request->task_id,
+            'content' => $request->subContent,
+        ]);
+
+        return back();
     }
 
     /**
@@ -80,7 +88,16 @@ class TaskController extends Controller
             ->orWhere('user_id', 0)
             ->get('task_id')
             ->count();
-        return view('task.show')->with(['tasks' => $tasks, 'subCount' => $subCount]);
+        $subEndCount = DB::select('select count(s.status) from tasks t inner join subtasks s
+                    on t.id = s.task_id where s.status = 1');
+
+
+
+
+
+        $result = explode(":",json_encode($subEndCount, true));
+        $res = (int) $result[1][0];
+        return view('task.show')->with(['tasks' => $tasks, 'subCount' => $subCount, 'endCount' => $res]);
     }
 
     /**

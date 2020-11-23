@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="col-md-12" style="margin-left: 100px">
+        <div class="col-md-11" style="margin-left: 175px">
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-center">
@@ -31,7 +31,6 @@
                                 </th>
                                 <th scope="row">
                                     {{$task->content}}
-                                    {{$subCount}}
                                 </th>
                                 <td>
                                     @if($task->status == 0)
@@ -43,7 +42,9 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="progress">
-                                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{$task->progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$task->progress}}%;"></div>
+                                            <div class="progress-bar bg-gradient-danger"
+                                                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                 style="width: {{ number_format($endCount / $subCount,2) * 100 }}%;"></div>
                                         </div>
                                     </div>
                                 </td>
@@ -53,7 +54,7 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 0])}}">Waiting</a>
                                             <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 1])}}">Done</a>
-                                            <a class="dropdown-item" href="{{route('task.subtask',['id' => $task->user_id, 'status' => 1])}}">Done</a>
+                                            <a class="dropdown-item" href="{{route('task.subtask',['id' => $task->user_id, 'status' => 1])}}">Subtask</a>
                                         </div>
                                     </div>
                                 </td>

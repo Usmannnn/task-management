@@ -13,7 +13,13 @@ class Message extends Model
         'id',
         'sender_id',
         'receiver_id',
+        'm_head',
         'message',
         'isRead'
     ];
+
+    public function users(){
+
+        return $this->belongsTo(User::class, 'sender_id');
+    }
 }

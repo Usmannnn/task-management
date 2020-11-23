@@ -1,0 +1,11 @@
+standart kullanıcılar için register ekranı gösterilmeyecek
+bildirim gönderimdinde çok seçme yapılabilir
+userlar görevlerini görüp yorum yapabilecek
+
+query param üzerinden bilgiler görünüyor (get problem) ??!
+
+index sayfalarındaki tablolara pagination yapılabilir
+
+taskların progressleri için subtasklar action üzerinden onaylandıktan sonra task tablosuna da yansımalı
+
+subcount!!?
