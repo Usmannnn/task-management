@@ -21,6 +21,7 @@ class TaskController extends Controller
         $results = Task::with('users')->get();
 
         return view('task.index')->with(['results' => $results]);
+
     }
 
 
@@ -99,7 +100,6 @@ class TaskController extends Controller
             ->get();
 
         return view('task.show')->with(['tasks' => $tasks]);
-
     }
 
     /**
@@ -142,6 +142,7 @@ class TaskController extends Controller
 
     public function getChangeSubStatus($id, $task_id, $status)
     {
+
         Subtask::where('id', $id)->update(['status' => $status]);
 
         if ($status == 1) {
@@ -153,10 +154,10 @@ class TaskController extends Controller
         return back();
     }
 
-    public function getSubTasks($id) {
+    public function getSubTasks($id, $task_id) {
 
         $subTasks = Subtask::with('tasks')
-            ->where(['user_id' => $id])
+            ->where(['user_id' => $id, 'task_id' => $task_id])
             ->get();
         return view('task.show-subtask')->with(['subTasks' => $subTasks]);
     }

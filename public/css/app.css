@@ -2107,6 +2107,7 @@ pre code {
 .table-responsive {
   display: block;
   width: 100%;
+    min-height: 500px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -10902,4 +10903,5 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
 

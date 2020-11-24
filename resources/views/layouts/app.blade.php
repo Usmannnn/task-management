@@ -144,7 +144,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link" href="{{route('comment.index')}}">
                                             <i class="ni ni-email-83 text-dark"></i>
                                             <span class="nav-link-text">Comments</span>
                                         </a>
@@ -212,7 +212,6 @@
                                 <h6 class="navbar-heading p-0 text-muted">
                                     <span class="docs-normal">Generate Something</span>
                                 </h6>
-
                                 <ul class="navbar-nav mb-md-3">
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('user.create')}}">

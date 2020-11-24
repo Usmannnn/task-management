@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -14,7 +16,15 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::with('user')->with('task')->get();
+        return view('comment.index')->with(['comments' => $comments]);
+    }
+
+    public function commentIndex ($id) {
+
+        $task = Task::where('id',$id)->get();
+
+        return view('comment.create')->with(['task_id' => $task[0]->id]);
     }
 
     /**
@@ -24,7 +34,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -36,7 +46,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         Comment::create([
-            'user_id' => $request->user_id,
+            'user_id' => Auth::user()->id,
             'task_id' => $request->task_id,
             'comment' => $request->comment,
         ]);
@@ -52,7 +62,11 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comments = Comment::with('user')
+            ->with('task')
+            ->where('task_id',$id)->get();
+
+        return view('comment.show')->with(['comments' => $comments]);
     }
 
     /**

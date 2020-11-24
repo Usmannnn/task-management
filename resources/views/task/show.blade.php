@@ -62,7 +62,9 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 0])}}">Waiting</a>
                                             <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 1])}}">Done</a>
-                                            <a class="dropdown-item" href="{{route('task.subtask',['id' => $task->user_id, 'status' => 1])}}">Subtask</a>
+                                            <a class="dropdown-item" href="{{route('task.subtask',['id' => $task->user_id, 'task_id' => $task->id, 'status' => 1])}}">Subtask</a>
+                                            <a class="dropdown-item" href="{{route('comment.get',['id' => $task->id])}}">Add Comment</a>
+                                            <a class="dropdown-item" href="{{route('comment.show',['comment' => $task->id])}}">Show Comment</a>
                                         </div>
                                     </div>
                                 </td>
