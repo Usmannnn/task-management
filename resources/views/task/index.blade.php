@@ -57,7 +57,7 @@
                                             </div>
                                         </th>
                                         <th scope="row">
-                                            @if($result->status == 0)
+                                            @if($result->subCount != $result->progress)
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-sm">Waiting</span>
@@ -72,19 +72,11 @@
                                             @endif
                                         </th>
                                         <th scope="row">
-                                            @if($result->status == 0)
-                                                <div class="media align-items-center">
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">0%</span>
-                                                    </div>
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">{{ number_format($result->progress / $result->subCount, 2) * 100 }}%</span>
                                                 </div>
-                                            @else
-                                                <div class="media align-items-center">
-                                                    <div class="media-body">
-                                                        <span class="name mb-0 text-sm">100%</span>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                            </div>
                                         </th>
                                     </tr>
                             @endforeach

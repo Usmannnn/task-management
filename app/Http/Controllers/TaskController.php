@@ -19,8 +19,10 @@ class TaskController extends Controller
     public function index()
     {
         $results = Task::with('users')->get();
+
         return view('task.index')->with(['results' => $results]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,6 +36,15 @@ class TaskController extends Controller
         $tasks = Task::get();
 
         return view('task.create')->with(['users' => $users , 'tasks' => $tasks]);
+    }
+
+    public function createSub()
+    {
+        $users = User::whereNotIn('name', ['admin'])->get();
+
+        $tasks = Task::get();
+
+        return view('subtask.create')->with(['users' => $users , 'tasks' => $tasks]);
     }
 
     /**

@@ -227,6 +227,12 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="{{route('subtask.create')}}">
+                                            <i class="ni ni-palette"></i>
+                                            <span class="nav-link-text">Define Subtask</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="{{route('notification.create')}}">
                                             <i class="ni ni-ui-04"></i>
                                             <span class="nav-link-text">Generate Notification</span>

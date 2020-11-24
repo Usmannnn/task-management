@@ -30,7 +30,13 @@ Route::resource('task', App\Http\Controllers\TaskController::class)
 Route::get('task/{id}/{status}',[App\Http\Controllers\TaskController::class,'getChangeStatus'])
     ->middleware('auth')
     ->name('task.statusChange');
-Route::post('task/sub',[App\Http\Controllers\TaskController::class,'storeSub'])
+
+
+Route::get('sub',[App\Http\Controllers\TaskController::class,'createSub'])
+    ->middleware('auth')
+    ->name('subtask.create');
+
+Route::post('sub/store',[App\Http\Controllers\TaskController::class,'storeSub'])
     ->middleware('auth')
     ->name('task.storeSub');
 Route::get('sub/{id}',[App\Http\Controllers\TaskController::class,'getSubTasks'])
@@ -55,3 +61,6 @@ Route::resource('message', App\Http\Controllers\MessageController::class)
 Route::get('message/{id}/{status}',[App\Http\Controllers\MessageController::class,'getChangeStatus'])
     ->middleware('auth')
     ->name('message.statusChange');
+
+
+

@@ -33,7 +33,7 @@
                                     {{$task->content}}
                                 </th>
                                 <td>
-                                    @if($task->status == 0)
+                                    @if($task->progress !=  $task->subCount)
                                         <span class="badge badge-secondary">Waiting</span>
                                     @else
                                         <span class="badge badge-secondary">All Done</span>
