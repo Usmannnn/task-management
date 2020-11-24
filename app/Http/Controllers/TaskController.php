@@ -133,7 +133,12 @@ class TaskController extends Controller
     {
         Subtask::where('id', $id)->update(['status' => $status]);
 
-        Task::where('id', $task_id)->increment('progress');
+        if ($status == 1) {
+            Task::where('id', $task_id)->increment('progress');
+        } else {
+            Task::where('id', $task_id)->decrement('progress');
+        }
+
         return back();
     }
 
