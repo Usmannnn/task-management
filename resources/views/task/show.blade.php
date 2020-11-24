@@ -42,9 +42,17 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="progress">
-                                            <div class="progress-bar bg-gradient-danger"
-                                                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                                                 style="width: {{ number_format($endCount / $subCount,2) * 100 }}%;"></div>
+                                            @if($task->subCount == 0)
+                                                <div class="progress-bar bg-gradient-danger"
+                                                     role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                     style="width: 0%;">
+                                                </div>
+                                            @else
+                                                <div class="progress-bar bg-gradient-danger"
+                                                     role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                     style="width: {{ number_format($task->progress / $task->subCount, 2) * 100 }}%;">
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
@@ -66,30 +74,4 @@
             </div>
         </div>
     </div>
-
-    {{--}}
-                            <div class="card-footer text-muted">
-                        @if(session('message'))
-                            <div class="col-md-12">
-                                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                    {{session('message')}}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
-                        <form action="{{route('comment.store')}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                            <input type="hidden" name="task_id" value="{{$task->id}}">
-                            <div class="input-group mb-3">
-                                <textarea type="text" class="form-control" placeholder="Type Comment" name="comment" id="" cols="30" rows="4"></textarea>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="btn btn-success w-100" type="submit" id="button-addon2">Send</button>
-                            </div>
-                        </form>
-                    </div>
-        {{--}}
 @endsection

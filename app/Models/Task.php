@@ -13,6 +13,7 @@ class Task extends Model
         'user_id',
         'task_name',
         'content',
+        'subCount',
         'status',
         'progress',
         'start_date',

@@ -36,7 +36,7 @@ Route::post('task/sub',[App\Http\Controllers\TaskController::class,'storeSub'])
 Route::get('sub/{id}',[App\Http\Controllers\TaskController::class,'getSubTasks'])
     ->middleware('auth')
     ->name('task.subtask');
-Route::get('sub/update/{id}/{status}',[App\Http\Controllers\TaskController::class,'getChangeSubStatus'])
+Route::get('sub/update/{id}/{task_id}/{status}',[App\Http\Controllers\TaskController::class,'getChangeSubStatus'])
     ->middleware('auth')
     ->name('task.subtaskupdate');
 

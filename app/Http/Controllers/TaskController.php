@@ -70,6 +70,8 @@ class TaskController extends Controller
             'content' => $request->subContent,
         ]);
 
+        Task::where('id', $request->task_id)->increment('subCount');
+
         return back();
     }
 
@@ -84,20 +86,9 @@ class TaskController extends Controller
         $tasks = Task::where('user_id', $id)
             ->orWhere('user_id', 0)
             ->get();
-        $subCount = Subtask::where('user_id', $id)
-            ->orWhere('user_id', 0)
-            ->get('task_id')
-            ->count();
-        $subEndCount = DB::select('select count(s.status) from tasks t inner join subtasks s
-                    on t.id = s.task_id where s.status = 1');
 
+        return view('task.show')->with(['tasks' => $tasks]);
 
-
-
-
-        $result = explode(":",json_encode($subEndCount, true));
-        $res = (int) $result[1][0];
-        return view('task.show')->with(['tasks' => $tasks, 'subCount' => $subCount, 'endCount' => $res]);
     }
 
     /**
@@ -138,9 +129,11 @@ class TaskController extends Controller
         return back();
     }
 
-    public function getChangeSubStatus($id, $status)
+    public function getChangeSubStatus($id, $task_id, $status)
     {
         Subtask::where('id', $id)->update(['status' => $status]);
+
+        Task::where('id', $task_id)->increment('progress');
         return back();
     }
 
