@@ -27,9 +27,6 @@ Route::resource('user', App\Http\Controllers\UserController::class)
 
 Route::resource('task', App\Http\Controllers\TaskController::class)
     ->middleware('auth');
-Route::get('task/{id}/{status}',[App\Http\Controllers\TaskController::class,'getChangeStatus'])
-    ->middleware('auth')
-    ->name('task.statusChange');
 
 
 Route::get('sub',[App\Http\Controllers\TaskController::class,'createSub'])

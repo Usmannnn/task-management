@@ -6,7 +6,6 @@ use App\Models\Subtask;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
@@ -132,12 +131,6 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getChangeStatus($id, $status)
-    {
-        Task::where('id', $id)->update(['status' => $status]);
-        return back();
     }
 
     public function getChangeSubStatus($id, $task_id, $status)

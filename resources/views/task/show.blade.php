@@ -12,7 +12,6 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <!-- Projects table -->
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                         <tr>
@@ -60,8 +59,6 @@
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 0])}}">Waiting</a>
-                                            <a class="dropdown-item" href="{{route('task.statusChange',['id' => $task->id, 'status' => 1])}}">Done</a>
                                             <a class="dropdown-item" href="{{route('task.subtask',['id' => $task->user_id, 'task_id' => $task->id, 'status' => 1])}}">Subtask</a>
                                             <a class="dropdown-item" href="{{route('comment.get',['id' => $task->id])}}">Add Comment</a>
                                             <a class="dropdown-item" href="{{route('comment.show',['comment' => $task->id])}}">Show Comment</a>
